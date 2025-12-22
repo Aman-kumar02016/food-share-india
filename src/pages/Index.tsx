@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Heart, Users, Clock, Utensils } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import heroBg from '@/assets/hero-bg.jpg';
 
 const Index = () => {
   return (
@@ -12,9 +13,11 @@ const Index = () => {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 gradient-warm opacity-80" />
-          <div className="absolute top-20 right-10 w-72 h-72 rounded-full bg-primary/8 blur-3xl" />
-          <div className="absolute bottom-10 left-10 w-96 h-96 rounded-full bg-secondary/10 blur-3xl" />
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${heroBg})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/70 to-background/90" />
           
           <div className="container relative py-16 md:py-28 px-4 md:px-6">
             <div className="max-w-3xl mx-auto text-center animate-fade-up">
