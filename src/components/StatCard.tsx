@@ -10,7 +10,7 @@ interface StatCardProps {
 
 const StatCard = ({ title, value, icon: Icon, description }: StatCardProps) => {
   return (
-    <div className="bg-card rounded-xl border border-border p-6 shadow-card transition-all duration-300 hover:shadow-soft hover:-translate-y-1">
+    <div className="bg-card rounded-2xl border border-border/60 p-6 shadow-card transition-all duration-300 hover:shadow-soft hover:-translate-y-1">
       <div className="flex items-start justify-between">
         <div>
           <p className="text-sm text-muted-foreground font-medium">{title}</p>
@@ -21,7 +21,7 @@ const StatCard = ({ title, value, icon: Icon, description }: StatCardProps) => {
             <p className="text-xs text-muted-foreground mt-1">{description}</p>
           )}
         </div>
-        <div className="h-12 w-12 rounded-lg gradient-hero flex items-center justify-center">
+        <div className="h-12 w-12 rounded-2xl gradient-hero flex items-center justify-center">
           <Icon className="h-6 w-6 text-primary-foreground" />
         </div>
       </div>

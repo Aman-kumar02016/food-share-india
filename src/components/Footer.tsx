@@ -1,19 +1,16 @@
-import { Heart } from 'lucide-react';
+import logo from '@/assets/logo.jpg';
 
 const Footer = () => {
   return (
     <footer className="border-t border-border bg-muted/30">
-      <div className="container py-8">
+      <div className="container py-10 px-4 md:px-6">
         <div className="flex flex-col items-center justify-center gap-4 text-center">
-          <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg gradient-hero">
-              <Heart className="h-4 w-4 text-primary-foreground" />
-            </div>
-            <span className="font-display text-lg font-bold text-foreground">
-              Anndaata
-            </span>
-          </div>
-          <p className="text-sm text-muted-foreground max-w-md">
+          <img 
+            src={logo} 
+            alt="Anndaata Logo" 
+            className="h-14 w-auto object-contain"
+          />
+          <p className="text-sm text-muted-foreground max-w-md leading-relaxed">
             Connecting surplus food with those in need. Reduce waste, share love, build community.
           </p>
           <p className="text-xs text-muted-foreground">
