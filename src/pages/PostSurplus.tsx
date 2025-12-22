@@ -82,10 +82,10 @@ const PostSurplus = () => {
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
       
-      <main className="flex-1 py-8">
-        <div className="container max-w-2xl">
-          <div className="text-center mb-8 animate-fade-up">
-            <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
+      <main className="flex-1 py-8 md:py-12">
+        <div className="container max-w-2xl px-4 md:px-6">
+          <div className="text-center mb-10 animate-fade-up">
+            <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3 tracking-tight">
               Post Surplus Food
             </h1>
             <p className="text-muted-foreground">
@@ -93,14 +93,14 @@ const PostSurplus = () => {
             </p>
           </div>
 
-          <Card className="animate-fade-up shadow-soft" style={{ animationDelay: '100ms' }}>
-            <CardHeader>
-              <CardTitle className="font-display">Food Details</CardTitle>
+          <Card className="animate-fade-up shadow-soft border border-border/60 rounded-3xl" style={{ animationDelay: '100ms' }}>
+            <CardHeader className="pb-6 pt-8 px-6 md:px-8">
+              <CardTitle className="font-display text-xl">Food Details</CardTitle>
               <CardDescription>
                 Provide accurate information to help receivers find and collect the food
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="px-6 md:px-8 pb-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Donor Info */}
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -111,6 +111,7 @@ const PostSurplus = () => {
                       placeholder="e.g., Sharma Restaurant"
                       value={formData.donorName}
                       onChange={e => setFormData({ ...formData, donorName: e.target.value })}
+                      className="rounded-xl"
                     />
                   </div>
                   
@@ -120,7 +121,7 @@ const PostSurplus = () => {
                       value={formData.donorType} 
                       onValueChange={(value: DonorType) => setFormData({ ...formData, donorType: value })}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger className="rounded-xl">
                         <SelectValue placeholder="Select type" />
                       </SelectTrigger>
                       <SelectContent>
@@ -148,6 +149,7 @@ const PostSurplus = () => {
                     value={formData.foodDescription}
                     onChange={e => setFormData({ ...formData, foodDescription: e.target.value })}
                     rows={3}
+                    className="rounded-xl"
                   />
                 </div>
 
@@ -158,7 +160,7 @@ const PostSurplus = () => {
                       value={formData.foodType} 
                       onValueChange={(value: FoodType) => setFormData({ ...formData, foodType: value })}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger className="rounded-xl">
                         <SelectValue placeholder="Select" />
                       </SelectTrigger>
                       <SelectContent>
@@ -181,6 +183,7 @@ const PostSurplus = () => {
                       placeholder="e.g., 10 kg"
                       value={formData.quantity}
                       onChange={e => setFormData({ ...formData, quantity: e.target.value })}
+                      className="rounded-xl"
                     />
                   </div>
 
@@ -192,12 +195,13 @@ const PostSurplus = () => {
                       placeholder="e.g., 20"
                       value={formData.servings}
                       onChange={e => setFormData({ ...formData, servings: e.target.value })}
+                      className="rounded-xl"
                     />
                   </div>
                 </div>
 
                 {/* Vegetarian Toggle */}
-                <div className="flex items-center justify-between p-4 bg-muted rounded-lg">
+                <div className="flex items-center justify-between p-5 bg-muted/50 rounded-2xl border border-border/50">
                   <div>
                     <Label className="text-base">Vegetarian Food</Label>
                     <p className="text-sm text-muted-foreground">Is this food 100% vegetarian?</p>
@@ -220,6 +224,7 @@ const PostSurplus = () => {
                       placeholder="e.g., Sector 15, Near Metro Station"
                       value={formData.location}
                       onChange={e => setFormData({ ...formData, location: e.target.value })}
+                      className="rounded-xl"
                     />
                   </div>
 
@@ -229,7 +234,7 @@ const PostSurplus = () => {
                       value={formData.city} 
                       onValueChange={value => setFormData({ ...formData, city: value })}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger className="rounded-xl">
                         <SelectValue placeholder="Select city" />
                       </SelectTrigger>
                       <SelectContent>
@@ -254,6 +259,7 @@ const PostSurplus = () => {
                       placeholder="+91 98765 43210"
                       value={formData.contactPhone}
                       onChange={e => setFormData({ ...formData, contactPhone: e.target.value })}
+                      className="rounded-xl"
                     />
                   </div>
 
@@ -266,7 +272,7 @@ const PostSurplus = () => {
                       value={formData.expiryHours} 
                       onValueChange={value => setFormData({ ...formData, expiryHours: value })}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger className="rounded-xl">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -285,7 +291,7 @@ const PostSurplus = () => {
                   type="submit" 
                   variant="hero" 
                   size="lg" 
-                  className="w-full"
+                  className="w-full rounded-xl mt-4"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? 'Posting...' : 'Post Surplus Food'}

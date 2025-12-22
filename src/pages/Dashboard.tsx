@@ -66,9 +66,9 @@ const Dashboard = () => {
       
       <main className="flex-1">
         {/* Header */}
-        <section className="gradient-warm py-12">
-          <div className="container">
-            <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
+        <section className="gradient-warm py-12 md:py-16">
+          <div className="container px-4 md:px-6">
+            <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2 tracking-tight">
               Dashboard
             </h1>
             <p className="text-muted-foreground">
@@ -78,9 +78,9 @@ const Dashboard = () => {
         </section>
 
         {/* Stats Grid */}
-        <section className="py-8">
-          <div className="container">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <section className="py-8 md:py-10">
+          <div className="container px-4 md:px-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
               <StatCard
                 title="Total Posts"
                 value={stats.totalPosts}
@@ -110,12 +110,12 @@ const Dashboard = () => {
         </section>
 
         {/* Charts and Tables */}
-        <section className="pb-12">
-          <div className="container">
-            <div className="grid lg:grid-cols-3 gap-6">
+        <section className="pb-12 md:pb-16">
+          <div className="container px-4 md:px-6">
+            <div className="grid lg:grid-cols-3 gap-5 md:gap-6">
               {/* Recent Activity */}
-              <Card className="lg:col-span-2 shadow-card">
-                <CardHeader>
+              <Card className="lg:col-span-2 shadow-card border border-border/60 rounded-2xl">
+                <CardHeader className="pb-4">
                   <CardTitle className="font-display flex items-center gap-2">
                     <TrendingUp className="h-5 w-5 text-primary" />
                     Recent Activity
@@ -123,11 +123,11 @@ const Dashboard = () => {
                   <CardDescription>Latest food surplus posts</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-4">
+                  <div className="space-y-3">
                     {recentPosts.map(post => (
                       <div 
                         key={post.id} 
-                        className="flex items-center gap-4 p-4 rounded-lg bg-muted/50 transition-colors hover:bg-muted"
+                        className="flex items-center gap-4 p-4 rounded-xl bg-muted/40 transition-all duration-200 hover:bg-muted/70 border border-border/40"
                       >
                         <div className="text-2xl">
                           {DONOR_TYPES.find(d => d.value === post.donorType)?.icon}
@@ -140,8 +140,11 @@ const Dashboard = () => {
                             {post.foodDescription}
                           </p>
                         </div>
-                        <div className="text-right flex flex-col items-end gap-1">
-                          <Badge variant={post.claimed ? 'secondary' : 'default'}>
+                        <div className="text-right flex flex-col items-end gap-1.5">
+                          <Badge 
+                            variant={post.claimed ? 'secondary' : 'default'}
+                            className="rounded-full"
+                          >
                             {post.claimed ? 'Claimed' : 'Available'}
                           </Badge>
                           <span className="text-xs text-muted-foreground">
@@ -155,10 +158,10 @@ const Dashboard = () => {
               </Card>
 
               {/* Side Stats */}
-              <div className="space-y-6">
+              <div className="space-y-5 md:space-y-6">
                 {/* City Distribution */}
-                <Card className="shadow-card">
-                  <CardHeader>
+                <Card className="shadow-card border border-border/60 rounded-2xl">
+                  <CardHeader className="pb-4">
                     <CardTitle className="font-display flex items-center gap-2 text-lg">
                       <MapPin className="h-5 w-5 text-primary" />
                       Top Cities
@@ -185,8 +188,8 @@ const Dashboard = () => {
                 </Card>
 
                 {/* Donor Type Distribution */}
-                <Card className="shadow-card">
-                  <CardHeader>
+                <Card className="shadow-card border border-border/60 rounded-2xl">
+                  <CardHeader className="pb-4">
                     <CardTitle className="font-display flex items-center gap-2 text-lg">
                       <Users className="h-5 w-5 text-primary" />
                       Donor Types
@@ -200,7 +203,7 @@ const Dashboard = () => {
                             <span>{donor.icon}</span>
                             {donor.type}
                           </span>
-                          <Badge variant="outline">{donor.count}</Badge>
+                          <Badge variant="outline" className="rounded-full">{donor.count}</Badge>
                         </div>
                       ))}
                     </div>

@@ -91,9 +91,9 @@ const Browse = () => {
       
       <main className="flex-1">
         {/* Header */}
-        <section className="gradient-warm py-12">
-          <div className="container">
-            <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
+        <section className="gradient-warm py-12 md:py-16">
+          <div className="container px-4 md:px-6">
+            <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2 tracking-tight">
               Browse Surplus Food
             </h1>
             <p className="text-muted-foreground">
@@ -103,24 +103,24 @@ const Browse = () => {
         </section>
 
         {/* Filters */}
-        <section className="border-b border-border bg-card sticky top-16 z-40">
-          <div className="container py-4">
+        <section className="border-b border-border bg-card sticky top-16 z-40 shadow-sm">
+          <div className="container py-4 px-4 md:px-6">
             <div className="flex flex-col lg:flex-row gap-4">
               {/* Search */}
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder="Search by name, food, or location..."
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
-                  className="pl-10"
+                  className="pl-11 rounded-xl border-border/60"
                 />
               </div>
 
               {/* Filter Dropdowns */}
               <div className="flex flex-wrap gap-3">
                 <Select value={selectedCity} onValueChange={setSelectedCity}>
-                  <SelectTrigger className="w-[140px]">
+                  <SelectTrigger className="w-[140px] rounded-xl">
                     <SelectValue placeholder="City" />
                   </SelectTrigger>
                   <SelectContent>
@@ -132,7 +132,7 @@ const Browse = () => {
                 </Select>
 
                 <Select value={selectedDonorType} onValueChange={setSelectedDonorType}>
-                  <SelectTrigger className="w-[160px]">
+                  <SelectTrigger className="w-[160px] rounded-xl">
                     <SelectValue placeholder="Donor Type" />
                   </SelectTrigger>
                   <SelectContent>
@@ -149,7 +149,7 @@ const Browse = () => {
                   variant={vegOnly ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setVegOnly(!vegOnly)}
-                  className="gap-1"
+                  className="gap-1 rounded-full"
                 >
                   <Leaf className="h-4 w-4" />
                   Veg Only
@@ -159,6 +159,7 @@ const Browse = () => {
                   variant={showAvailableOnly ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setShowAvailableOnly(!showAvailableOnly)}
+                  className="rounded-full"
                 >
                   Available Only
                 </Button>
@@ -168,7 +169,7 @@ const Browse = () => {
                     variant="ghost"
                     size="sm"
                     onClick={clearFilters}
-                    className="gap-1 text-muted-foreground"
+                    className="gap-1 text-muted-foreground rounded-full"
                   >
                     <X className="h-4 w-4" />
                     Clear
@@ -184,18 +185,18 @@ const Browse = () => {
                   <Filter className="h-3 w-3" /> Filters:
                 </span>
                 {searchQuery && (
-                  <Badge variant="secondary">Search: "{searchQuery}"</Badge>
+                  <Badge variant="secondary" className="rounded-full">Search: "{searchQuery}"</Badge>
                 )}
                 {selectedCity !== 'all' && (
-                  <Badge variant="secondary">{selectedCity}</Badge>
+                  <Badge variant="secondary" className="rounded-full">{selectedCity}</Badge>
                 )}
                 {selectedDonorType !== 'all' && (
-                  <Badge variant="secondary">
+                  <Badge variant="secondary" className="rounded-full">
                     {DONOR_TYPES.find(d => d.value === selectedDonorType)?.label}
                   </Badge>
                 )}
                 {vegOnly && (
-                  <Badge variant="secondary" className="gap-1">
+                  <Badge variant="secondary" className="gap-1 rounded-full">
                     <Leaf className="h-3 w-3" /> Vegetarian
                   </Badge>
                 )}
@@ -205,16 +206,16 @@ const Browse = () => {
         </section>
 
         {/* Results */}
-        <section className="py-8">
-          <div className="container">
+        <section className="py-8 md:py-10">
+          <div className="container px-4 md:px-6">
             <div className="flex items-center justify-between mb-6">
               <p className="text-muted-foreground">
-                Showing <span className="font-medium text-foreground">{filteredPosts.length}</span> results
+                Showing <span className="font-semibold text-foreground">{filteredPosts.length}</span> results
               </p>
             </div>
 
             {filteredPosts.length > 0 ? (
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
                 {filteredPosts.map(post => (
                   <SurplusCard key={post.id} post={post} onClaim={handleClaim} />
                 ))}
@@ -225,10 +226,10 @@ const Browse = () => {
                 <h3 className="font-display text-xl font-semibold text-foreground mb-2">
                   No Food Found
                 </h3>
-                <p className="text-muted-foreground mb-4">
+                <p className="text-muted-foreground mb-6">
                   Try adjusting your filters or check back later
                 </p>
-                <Button variant="outline" onClick={clearFilters}>
+                <Button variant="outline" onClick={clearFilters} className="rounded-full">
                   Clear All Filters
                 </Button>
               </div>
